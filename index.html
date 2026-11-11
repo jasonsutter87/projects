@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jason Sutter · Projects</title>
+<meta name="description" content="Applied AI engineer. 21 projects I built and run myself, shown as the real screens.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --page:#fafafa; --panel:#ffffff; --panel2:#f1f2f4; --rule:#e3e5e8; --rule2:#d4d7dc;
+  --head:#0b0c0e; --body:#3a3f47; --grey:#656b75; --warm:#9a5800;
+  --sans:Inter,system-ui,-apple-system,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --col:1200px; --gut:40px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--page)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--page);color:var(--body);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--head);text-decoration:none}
+:focus-visible{outline:2px solid var(--warm);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:#fff;color:#000;padding:8px 12px;z-index:9}
+.w{max-width:var(--col);margin:0 auto;padding:0 var(--gut)}
+h1,h2,h3{color:var(--head);font-weight:520;letter-spacing:-.022em;margin:0}
+.dim{color:var(--grey)}
+
+.nav{height:64px;border-bottom:1px solid var(--rule);display:flex;align-items:center}
+.nav .w{display:flex;justify-content:space-between;align-items:center;width:100%}
+.nav .me{font-weight:500;color:var(--head)}
+.nav nav{display:flex;gap:10px;font-size:14px}
+.nav nav a{color:var(--grey);padding:6px 8px;display:inline-block}
+.nav nav a:hover{color:var(--head)}
+
+/* index */
+.intro{padding:120px 0 72px}
+.intro h1{font-size:56px;line-height:1.04;max-width:20ch}
+.intro h1 .dim{display:block;font-weight:520}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.chips span{font-size:13px;padding:4px 10px;border-radius:6px;background:var(--panel2);color:var(--head)}
+.chips span.on{background:#fbf0de;color:var(--warm)}
+.btns{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;font-size:15px;font-weight:500;padding:10px 16px;border-radius:8px;border:1px solid var(--rule2);background:var(--panel);color:var(--head);min-height:44px}
+.btn.dark{background:var(--head);color:#fff;border-color:var(--head)}
+.btn:hover{box-shadow:0 1px 2px rgba(0,0,0,.06),0 8px 24px -8px rgba(0,0,0,.18)}
+.intro p{font-size:20px;max-width:56ch;margin:24px 0 0;color:var(--grey)}
+.reel{border-top:1px solid var(--rule)}
+.still{display:grid;grid-template-columns:minmax(260px,400px) 1fr;min-height:340px;border-bottom:1px solid var(--rule);color:inherit;overflow:hidden;position:relative}
+.still .txt{padding:36px var(--gut) 32px max(var(--gut),calc((100vw - var(--col))/2 + var(--gut)));display:flex;flex-direction:column;justify-content:flex-end;gap:8px;position:relative;z-index:2}
+.still .n{font:400 12px var(--mono);color:var(--grey)}
+.still h2{font-size:32px;line-height:1.05}
+.still .t{color:var(--grey);font-size:16px;max-width:30ch}
+.still .p{font-size:13px;color:var(--grey);margin-top:6px}
+.still .p .on{color:var(--warm)}
+.still .pic{position:relative;padding-top:36px}
+.still .pic img{display:block;width:calc(100% + 120px);max-width:none;height:330px;object-fit:cover;object-position:top left;border-radius:10px 0 0 0;border:1px solid var(--rule2);border-right:0;border-bottom:0;box-shadow:0 1px 2px rgba(0,0,0,.06),0 12px 32px -12px rgba(0,0,0,.18);transition:transform .3s}
+.still:hover .pic img,.still:focus-visible .pic img{transform:translateY(-6px)}
+.still:hover h2{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.still.noimg .pic{display:flex;align-items:center;padding:36px var(--gut)}
+.still.noimg .pic div{border:1px dashed var(--rule2);border-radius:10px;padding:28px;color:var(--grey);max-width:46ch}
+
+/* project */
+.phead{padding:72px 0 40px}
+.phead .back{font-size:14px;color:var(--grey)}
+.phead .k{font:400 12px var(--mono);color:var(--grey);margin-top:40px}
+.phead h1{font-size:64px;line-height:1;margin-top:10px}
+.phead .lead{font-size:22px;line-height:1.4;color:var(--head);max-width:44ch;margin:20px 0 0}
+.phead .meta{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:24px;font-size:14px;color:var(--grey)}
+.phead .meta .on{color:var(--warm)}
+.phead .meta a{color:var(--body);border-bottom:1px solid var(--rule2)}
+.phead .meta a:hover{color:var(--head)}
+.hero-shot{position:relative;margin:0 0 0 max(var(--gut),calc((100vw - var(--col))/2 + var(--gut)));}
+.hero-shot img{display:block;width:100%;max-height:620px;object-fit:cover;object-position:top left;border-radius:12px 0 0 0;border:1px solid var(--rule2);border-right:0;box-shadow:0 20px 48px -24px rgba(0,0,0,.25)}
+.hero-shot::after{content:"";position:absolute;inset:auto 0 0 0;height:120px;background:linear-gradient(transparent,var(--page));pointer-events:none}
+.figcap{font:400 12px var(--mono);color:var(--grey);margin-top:12px}
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-top:48px}
+.nums div{padding:24px 20px 24px 0;border-right:1px solid var(--rule)}
+.nums div+div{padding-left:20px}
+.nums div:last-child{border-right:0}
+.nums b{display:block;font-size:28px;font-weight:520;color:var(--head);letter-spacing:-.02em;line-height:1.1}
+.nums b.long{font-size:20px;line-height:1.25}
+.nums span{font-size:13px;color:var(--grey)}
+.split{display:grid;grid-template-columns:320px minmax(0,1fr);gap:48px;padding:72px 0;border-bottom:1px solid var(--rule)}
+.split h2{font-size:28px;line-height:1.15}
+.split h2 .dim{display:block;font-weight:400}
+.split p{margin:0 0 14px;max-width:66ch;font-size:17px}
+.split ul{margin:0;padding:0;list-style:none;max-width:70ch}
+.split li{padding:12px 0 12px 20px;border-top:1px solid var(--rule);position:relative}
+.split li:first-child{border-top:0;padding-top:0}
+.split li::before{content:"";position:absolute;left:0;top:23px;width:6px;height:1px;background:var(--grey)}
+.split li:first-child::before{top:11px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
+.tags span{font-size:13px;color:var(--body);border:1px solid var(--rule2);border-radius:6px;padding:3px 9px}
+.tbl{width:100%;border-collapse:collapse;font-size:15px}
+.tbl td{padding:12px 16px 12px 0;border-top:1px solid var(--rule);vertical-align:top}
+.tbl td:first-child{color:var(--head);width:26%}
+.tbl td:last-child{color:var(--grey);font-size:14px}
+.loops{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule)}
+.loops div{padding:16px 16px 16px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.loops div:nth-child(odd){border-right:1px solid var(--rule)}
+.loops div:nth-child(even){padding-left:16px}
+.loops b{display:block;color:var(--head);font-weight:500}
+.ms{border-top:1px solid var(--rule)}
+.ms div{display:grid;grid-template-columns:170px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.ms b{font:400 12px/1.9 var(--mono);color:var(--grey);font-weight:400}
+.wall{display:grid;grid-template-columns:1fr 1fr;gap:40px 32px;padding:72px 0;border-bottom:1px solid var(--rule)}
+.wall h2{grid-column:1/-1;font-size:28px}
+.wall figure{margin:0}
+.wall button{all:unset;display:block;cursor:zoom-in;border-radius:10px;overflow:hidden;border:1px solid var(--rule2);background:var(--panel)}
+.wall button:focus-visible{outline:2px solid var(--warm);outline-offset:3px}
+.wall img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.wall figcaption{font-size:14px;color:var(--body);margin-top:10px}
+.wall figcaption i{font:normal 400 12px var(--mono);color:var(--grey);margin-right:8px}
+.log{border-radius:10px;overflow:hidden;background:#0b0d10}
+.log .t{font:400 12px var(--mono);color:#8a8f98;padding:10px 14px;border-bottom:1px solid #1d2128}
+.log pre{margin:0;padding:16px;font:400 12.5px/1.6 var(--mono);color:#d7f5c9;overflow-x:auto}
+.pn{display:flex;justify-content:space-between;padding:48px 0 96px;font-size:15px}
+.pn small{display:block;color:var(--grey);font-size:13px}
+.pn a:hover{text-decoration:underline;text-underline-offset:4px}
+footer{border-top:1px solid var(--rule);padding:32px 0 48px;font-size:14px;color:var(--grey)}
+
+dialog{border:0;padding:0;background:transparent;max-width:min(1400px,94vw)}
+dialog::backdrop{background:rgba(0,0,0,.88)}
+dialog img{display:block;max-width:100%;max-height:84vh;border-radius:8px}
+dialog p{color:#e6e8eb;font-size:15px;margin:10px 2px 0}
+dialog .x{position:absolute;top:-40px;right:0;background:#fff;color:#0b0c0e;border:0;border-radius:99px;padding:6px 14px;font:500 13px var(--sans);cursor:pointer}
+
+@media (max-width:860px){
+  :root{--gut:20px}
+  .intro{padding:64px 0 40px}
+  .intro h1,.phead h1{font-size:40px}
+  .intro p{font-size:18px}
+  .still{grid-template-columns:1fr;min-height:0}
+  .still .txt{padding:28px var(--gut) 12px}
+  .still .pic{padding:0 0 0 var(--gut)}
+  .still .pic img{height:200px;width:calc(100% + 40px)}
+  .split{grid-template-columns:minmax(0,1fr);gap:20px;padding:48px 0}
+  .wall,.loops{grid-template-columns:minmax(0,1fr)}
+  .loops div:nth-child(odd){border-right:0}
+  .loops div:nth-child(even){padding-left:0}
+  .ms div{grid-template-columns:1fr;gap:0}
+  .tbl td:last-child{display:none}
+  .nav nav .hide-s{display:none}
+  .phead .lead{font-size:19px}
+  .nums{grid-template-columns:1fr 1fr}
+  .nums div,.nums div+div{padding:18px 12px 18px 0;border-right:0;border-bottom:1px solid var(--rule)}
+  .nums div:nth-child(even){padding-left:16px;border-left:1px solid var(--rule)}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="w">
+  <a class="me" href="#/">Jason Sutter</a>
+  <nav aria-label="Profiles"><a href="https://github.com/jasonsutter87">GitHub</a><a href="https://linkedin.com/in/jasonsutter87">LinkedIn</a><a class="hide-s" href="https://jasonsutter87.github.io">Personal site</a></nav>
+</div></header>
+<main id="main"></main>
+<footer><div class="w">Every number here was counted from the project's own repo, tests or live site, November 2026.</div></footer>
+<dialog id="lb" aria-label="Screenshot"><button class="x" type="button">Close</button><img alt=""><p></p></dialog>
+<script src="data.js"></script>
+<script>
+const P = window.PROJECTS || [];
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const host = u => u.replace(/^https?:\/\//,'').replace(/\/$/,'');
+const isLive = p => /live|shipping|beta|released/i.test(p.status||'');
+const ul = a => (a&&a.length) ? `<ul>${a.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>` : '';
+
+function still(p){
+  const s = p.shots[0];
+  return `<a class="still${s?'':' noimg'}" href="#/${p.slug}">
+    <div class="txt"><div class="n">${String(p.n).padStart(2,'0')} · ${esc(p.category)}</div><h2>${esc(p.name)}</h2><div class="t">${esc(p.tagline)}</div>
+      <div class="p"><span class="${isLive(p)?'on':''}">${esc(p.status)}</span> · ${esc(p.platforms)}</div></div>
+    <div class="pic">${s?`<img loading="lazy" src="${s.src}" alt="">`:`<div>${esc(p.oneLiner)}</div>`}</div>
+  </a>`;
+}
+
+function index(){
+  document.title='Jason Sutter · Projects';
+  const ai=P.filter(p=>/Applied AI/.test(p.category)).length;
+  const n=P.reduce((a,p)=>a+p.shots.length,0);
+  $('#main').innerHTML=`
+  <section class="intro"><div class="w">
+    <h1>I build applied AI and ship it. <span class="dim">These are ${P.length} projects I made and still use.</span></h1>
+    <p>Each page has what the project is, the stack, numbers counted from the repo, how the AI is engineered, how I use it day to day, screenshots, and a real build log.</p>
+    <div class="chips"><span>${ai} applied AI projects</span><span>${n} screenshots</span><span class="on">Most are live</span></div>
+    <div class="btns"><a class="btn dark" href="#/${P[0].slug}">Start with ${esc(P[0].name)}</a><a class="btn" href="https://github.com/jasonsutter87">See my GitHub</a></div>
+  </div></section>
+  <section class="reel" aria-label="Projects">${P.map(still).join('')}</section>`;
+}
+
+function project(p){
+  document.title=`${p.name} · Jason Sutter`;
+  const i=P.indexOf(p), prev=P[i-1], next=P[i+1];
+  const [lead,...more]=p.shots;
+  const sp=(id,h,sub,body)=>`<section class="split" id="s-${id}"><h2>${h}${sub?` <span class="dim">${sub}</span>`:''}</h2><div>${body}</div></section>`;
+  $('#main').innerHTML=`
+  <section class="phead"><div class="w">
+    <a class="back" href="#/">All projects</a>
+    <div class="k">${String(p.n).padStart(2,'0')} · ${esc(p.category)}</div>
+    <h1>${esc(p.name)}</h1>
+    <p class="lead">${esc(p.oneLiner)}</p>
+    <div class="meta"><span class="${isLive(p)?'on':''}">${esc(p.status)}</span><span>${esc(p.platforms)}</span>${p.timeline?`<span>${esc(p.timeline)}</span>`:''}${(p.links||[]).map(l=>`<a href="${esc(l.url)}">${esc(l.label)}</a>`).join('')}</div>
+  </div></section>
+  ${lead?`<figure class="hero-shot" style="margin-top:0;margin-bottom:0"><button type="button" data-k="0" style="all:unset;display:block;cursor:zoom-in" aria-label="Enlarge: ${esc(lead.caption)}"><img src="${lead.src}" alt="${esc(lead.caption)}"></button></figure><div class="w"><p class="figcap">Fig ${p.n}.1 — ${esc(lead.caption)}</p></div>`:''}
+  <div class="w">
+    ${p.metrics?.length?`<div class="nums">${p.metrics.map(m=>`<div><b class="${String(m.value).length>9?'long':''}">${esc(m.value)}</b><span>${esc(m.label)}</span></div>`).join('')}</div>`:''}
+    ${sp('what','The problem.','Why it exists.',`<p>${esc(p.problem)}</p><p>${esc(p.whatItIs)}</p>`)}
+    ${sp('how','How it works.','',`${ul(p.howItWorks)}<div class="tags">${(p.stack||[]).map(s=>`<span>${esc(s)}</span>`).join('')}</div>`)}
+    ${sp('ai','The applied AI.','What makes it trustworthy.',ul(p.aiAngle))}
+    ${p.primitives?sp('prims','Built on my own libraries.',`${p.primitives.length} of them.`,`<table class="tbl">${p.primitives.map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.role)}</td><td>${esc(x.proof)}</td></tr>`).join('')}</table>`):''}
+    ${p.loops?sp('loops','Loops that keep it honest.',`${p.loops.length} running.`,`<div class="loops">${p.loops.map(x=>`<div><b>${esc(x.name)}</b>${esc(x.what)}</div>`).join('')}</div>`):''}
+    ${sp('dog','How I use it.','Every day, on my own work.',ul(p.dogfooding))}
+    ${p.milestones?sp('ms','Milestones.','From the daily log.',`<div class="ms">${p.milestones.map(x=>`<div><b>${esc(x.day)}</b><span>${esc(x.text)}</span></div>`).join('')}</div>`):''}
+    ${sp('progress','Where it stands.','And what is next.',ul(p.progress))}
+    ${more.length?`<section class="wall" id="s-shots" aria-label="Screenshots"><h2>Screens</h2>${more.map((s,k)=>`<figure><button type="button" data-k="${k+1}" aria-label="Enlarge: ${esc(s.caption)}"><img loading="lazy" src="${s.src}" alt="${esc(s.caption)}"></button><figcaption><i>Fig ${p.n}.${k+2}</i>${esc(s.caption)}</figcaption></figure>`).join('')}</section>`:''}
+    ${p.buildLog?sp('log','Build log.','Real output, trimmed.',`<div class="log"><div class="t">$ ${esc(p.buildLogTitle||'build log')}</div><pre>${esc(p.buildLog)}</pre></div>`):''}
+    <nav class="pn" aria-label="More projects">${prev?`<a href="#/${prev.slug}"><small>Previous</small>${esc(prev.name)}</a>`:'<span></span>'}${next?`<a href="#/${next.slug}" style="text-align:right"><small>Next</small>${esc(next.name)}</a>`:`<a href="#/" style="text-align:right"><small>That's all</small>Back to the reel</a>`}</nav>
+  </div>`;
+  document.querySelectorAll('[data-k]').forEach(b=>b.addEventListener('click',()=>openLb(p.shots[+b.dataset.k])));
+}
+
+const lb=$('#lb');
+function openLb(s){ if(!s) return; const im=lb.querySelector('img'); im.src=s.src; im.alt=s.caption; lb.querySelector('p').textContent=s.caption; lb.showModal(); }
+lb.querySelector('.x').onclick=()=>lb.close();
+lb.addEventListener('click',e=>{ if(e.target===lb) lb.close(); });
+function route(){
+  const slug=location.hash.replace(/^#\/?/,'').split('/')[0];
+  const p=P.find(x=>x.slug===slug);
+  p?project(p):index();
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);
+route();
+</script>
+</body>
+</html>
