@@ -152,7 +152,7 @@ dialog .x{position:absolute;top:-40px;right:0;background:#fff;color:#0b0c0e;bord
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav"><div class="w">
   <a class="me" href="#/">Jason Sutter</a>
-  <nav aria-label="Profiles"><a href="https://github.com/jasonsutter87">GitHub</a><a href="https://linkedin.com/in/jasonsutter87">LinkedIn</a><a class="hide-s" href="https://jasonsutter87.github.io">Personal site</a></nav>
+  <nav aria-label="Profiles"><a href="resume.pdf">Resume</a><a href="https://github.com/jasonsutter87">GitHub</a><a href="https://linkedin.com/in/jasonsutter87">LinkedIn</a><a class="hide-s" href="https://jasonsutter87.github.io">Personal site</a></nav>
 </div></header>
 <main id="main"></main>
 <footer><div class="w">Every number here was counted from the project's own repo, tests or live site, November 2026.</div></footer>
@@ -184,7 +184,7 @@ function index(){
     <h1>I build applied AI and ship it. <span class="dim">These are ${P.length} projects I made and still use.</span></h1>
     <p>Each page has what the project is, the stack, numbers counted from the repo, how the AI is engineered, how I use it day to day, screenshots, and a real build log.</p>
     <div class="chips"><span>${ai} applied AI projects</span><span>${n} screenshots</span><span class="on">Most are live</span></div>
-    <div class="btns"><a class="btn dark" href="#/${P[0].slug}">Start with ${esc(P[0].name)}</a><a class="btn" href="https://github.com/jasonsutter87">See my GitHub</a></div>
+    <div class="btns"><a class="btn dark" href="#/${P[0].slug}">Start with ${esc(P[0].name)}</a><a class="btn" href="resume.pdf">View my resume (PDF)</a><a class="btn" href="https://github.com/jasonsutter87">See my GitHub</a></div>
   </div></section>
   <section class="reel" aria-label="Projects">${P.map(still).join('')}</section>`;
 }
